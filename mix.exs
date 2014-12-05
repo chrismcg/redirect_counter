@@ -12,12 +12,15 @@ defmodule RedirectCounter.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: app_list(Mix.env)]
+    [
+      applications: app_list(Mix.env),
+      mod: {RedirectCounter, []}
+    ]
   end
 
   defp app_list(:dev), do: [:dotenv | app_list]
   defp app_list(_), do: app_list
-  defp app_list, do: [:httpoison, :logger]
+  defp app_list, do: [:logger, :httpoison]
 
   # Dependencies can be Hex packages:
   #
