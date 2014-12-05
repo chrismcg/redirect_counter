@@ -15,7 +15,7 @@ defmodule RedirectCounter.TwitterLinkStream do
 
   def handle_cast(:stream, state) do
     RedirectCounter.Twitter.links
-    |> Enum.each(&RedirectCounter.URLRedirectCounter.process/1)
+    |> Enum.each(&RedirectCounter.URL.process/1)
     { :noreply, state }
   end
 end

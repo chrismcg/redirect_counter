@@ -12,7 +12,7 @@ defmodule RedirectCounter.Supervisor do
     children = [
       worker(RedirectCounter.Count, []),
       worker(RedirectCounter.ConsoleOutput, []),
-      supervisor(RedirectCounter.CounterSupervisor, []),
+      supervisor(Task.Supervisor, [[name: :counter_supervisor]]),
       worker(RedirectCounter.TwitterLinkStream, [])
     ]
 
