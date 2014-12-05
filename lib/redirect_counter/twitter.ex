@@ -14,4 +14,8 @@ defmodule RedirectCounter.Twitter do
     |> Stream.reject(fn(t) -> t.entities["urls"] == [] end)
     |> Stream.flat_map(fn(t) -> Enum.map(t.entities["urls"], fn(u) -> u["expanded_url"] end) end)
   end
+
+  def process(fun) do
+    links |> Enum.each(fun)
+  end
 end
