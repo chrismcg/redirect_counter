@@ -1,5 +1,8 @@
 %{"dotenv": {:git, "git://github.com/avdi/dotenv_elixir.git", "e21832ef62a8f48f2e03c4fb0d8c65a006fd406e", []},
   "exjsx": {:hex, :exjsx, "3.0.1"},
   "extwitter": {:hex, :extwitter, "0.1.6"},
+  "hackney": {:hex, :hackney, "0.14.3"},
+  "httpoison": {:hex, :httpoison, "0.5.0"},
+  "idna": {:hex, :idna, "1.0.1"},
   "jsx": {:hex, :jsx, "2.3.0"},
   "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "2ee206ea921722893200a0ad534c6b6130233325", []}}

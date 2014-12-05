@@ -17,7 +17,7 @@ defmodule RedirectCounter.Mixfile do
 
   defp app_list(:dev), do: [:dotenv | app_list]
   defp app_list(_), do: app_list
-  defp app_list, do: [:logger]
+  defp app_list, do: [:httpoison, :logger]
 
   # Dependencies can be Hex packages:
   #
@@ -32,7 +32,8 @@ defmodule RedirectCounter.Mixfile do
     [
       {:oauth, github: "tim/erlang-oauth"},
       {:extwitter, "~> 0.1"},
-      {:dotenv, github: "avdi/dotenv_elixir"}
+      {:dotenv, github: "avdi/dotenv_elixir"},
+      {:httpoison, "~> 0.5"}
     ]
   end
 end
