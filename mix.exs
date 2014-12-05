@@ -12,8 +12,12 @@ defmodule RedirectCounter.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    [applications: app_list(Mix.env)]
   end
+
+  defp app_list(:dev), do: [:dotenv | app_list]
+  defp app_list(_), do: app_list
+  defp app_list, do: [:logger]
 
   # Dependencies can be Hex packages:
   #
@@ -25,6 +29,10 @@ defmodule RedirectCounter.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      {:oauth, github: "tim/erlang-oauth"},
+      {:extwitter, "~> 0.1"},
+      {:dotenv, github: "avdi/dotenv_elixir"}
+    ]
   end
 end
