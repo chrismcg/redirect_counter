@@ -1,6 +1,13 @@
 defmodule RedirectCounter.URL do
-  def process(url) do
+  use GenEvent
+
+  def listen do
+    RedirectCounter.Event.add_handler(__MODULE__, [])
+  end
+
+  def handle_event({:url, url}, state) do
     Task.Supervisor.start_child(:counter_supervisor, __MODULE__, :count_redirects, [url])
+    { :ok, state }
   end
 
   def count_redirects(url) do
