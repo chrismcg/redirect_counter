@@ -13,7 +13,7 @@ defmodule RedirectCounter.Supervisor do
       worker(RedirectCounter.Count, []),
       worker(RedirectCounter.ConsoleOutput, []),
       supervisor(Task.Supervisor, [[name: :counter_supervisor, shutdown: :brutal_kill, max_restarts: 0, max_seconds: 1]]),
-      worker(Task, [RedirectCounter.Twitter, :process, [&RedirectCounter.URL.process/1]])
+      worker(Task, [RedirectCounter.Counter, :count, []])
     ]
 
     supervise(children, strategy: :one_for_one)
