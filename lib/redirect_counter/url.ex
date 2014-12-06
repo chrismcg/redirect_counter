@@ -1,8 +1,4 @@
 defmodule RedirectCounter.URL do
-  def process(url) do
-    Task.Supervisor.start_child(:counter_supervisor, __MODULE__, :count_redirects, [url])
-  end
-
   def count_redirects(url) do
     { :ok, response } = HTTPoison.head(url)
     redirect_count = do_count(response.status_code, response.headers["Location"], 0)
