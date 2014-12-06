@@ -1,6 +1,6 @@
 defmodule RedirectCounter.URL do
   def process(url) do
-    Task.Supervisor.async(:counter_supervisor, __MODULE__, :count_redirects, [url])
+    Task.Supervisor.start_child(:counter_supervisor, __MODULE__, :count_redirects, [url])
   end
 
   def count_redirects(url) do
