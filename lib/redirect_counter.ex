@@ -3,7 +3,7 @@ defmodule RedirectCounter do
 
   def start(_type, _args) do
     result = RedirectCounter.Supervisor.start_link
-    RedirectCounter.URL.listen
+    RedirectCounter.URLListener.listen
     result
   end
 end

@@ -1,15 +1,4 @@
 defmodule RedirectCounter.URL do
-  use GenEvent
-
-  def listen do
-    RedirectCounter.Event.add_handler(__MODULE__, [])
-  end
-
-  def handle_event({:url, url}, state) do
-    Task.Supervisor.start_child(:counter_supervisor, __MODULE__, :count_redirects, [url])
-    { :ok, state }
-  end
-
   def count_redirects(url) do
     { :ok, response } = HTTPoison.head(url)
     redirect_count = do_count(response.status_code, response.headers["Location"], 0)
